@@ -3,10 +3,13 @@ import {MatButtonModule} from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { CustomerService } from '../../services/customer';
 import { Customer } from '../../models/customer.model';
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+
 // import { RouterLink } from "../../../../node_modules/@angular/router/router_module.d";
 @Component({
   selector: 'app-customer-list',
-  imports: [MatButtonModule, RouterModule],
+  imports: [MatButtonModule, RouterModule,CommonModule,MatIconModule],
   templateUrl: './customer-list.html',
   styleUrl: './customer-list.css'
 })
