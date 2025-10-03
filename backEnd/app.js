@@ -1,15 +1,20 @@
 const express = require('express');
 const cors = require('cors');
+const connectDB = require('./config/db.config');
+const dotenv = require('dotenv');
+dotenv.config(); 
 
 const app = express();
 
-const PORT =3000;
+const PORT =process.env.PORT;
+
 
 // enable cors 
 app.use(cors());
 // enable json parser
 app.use(express.json());
 
+connectDB()
 // route the customer api 
 const customerRoutes = require('./routes/Customer.route');
 //use the route
