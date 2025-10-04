@@ -1,11 +1,34 @@
-import { Component } from '@angular/core';
+import { Component , inject, OnInit} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CustomerService } from '../../services/customer';
+import { Customer } from '../../models/customer.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-customer-details',
-  imports: [],
+  imports: [  CommonModule],
   templateUrl: './customer-details.html',
   styleUrl: './customer-details.css'
 })
-export class CustomerDetails {
-
+export class CustomerDetails implements OnInit{
+private activatedRouter = inject(ActivatedRoute);
+  private customerService = inject(CustomerService);
+  customer!: Customer;
+  customerId!: string;
+  ngOnInit(): void {
+    // get the customer from the url
+    this.customerId = this.activatedRouter.snapshot.params['id'];
+    if (this.customerId) {
+      // get the cstomer info
+      this.customerService.getById(this.customerId).subscribe(
+        data => {
+          this.customer = data;
+        },
+        error => {
+          console.error('error:', error);
+        }
+      )
+    }
+    console.log('customerId:', this.customerId)
+  }
 }
