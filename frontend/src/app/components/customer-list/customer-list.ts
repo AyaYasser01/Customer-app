@@ -6,7 +6,7 @@ import { Customer } from '../../models/customer.model';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 
-// import { RouterLink } from "../../../../node_modules/@angular/router/router_module.d";
+
 @Component({
   selector: 'app-customer-list',
   imports: [MatButtonModule, RouterModule,CommonModule,MatIconModule],

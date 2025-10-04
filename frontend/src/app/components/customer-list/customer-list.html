@@ -1,25 +1,26 @@
-<h5 class="mb-3">Customer List</h5>
+<h5>Customer List</h5>
 
-<button matButton="filled" [routerLink]="'/create'" class="mb-3">
+<button mat-flat-button color="primary" [routerLink]="'/create'">
   Create New Customer
 </button>
 
-<div class="list-group">
-  <div *ngFor="let customer of customers" class="list-group-item d-flex justify-content-between align-items-center">
-    <div>
-      <b>{{ customer.name }}</b><br>
-      <small>{{ customer.email }} | {{ customer.phone }}</small>
-    </div>
-    <div>
-      <button mat-icon-button color="primary" [routerLink]="'/edit/' + customer._id">
-        <mat-icon>edit</mat-icon>
-      </button>
-      <button mat-icon-button color="accent" [routerLink]="'/details/' + customer._id">
-        <mat-icon>visibility</mat-icon>
-      </button>
-      <button mat-icon-button color="warn" (click)="onDeleteClick(customer)">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </div>
+<div *ngFor="let customer of customers"
+     class="mat-elevation-z2 p-2 my-2 d-flex align-items-center">
+  <div>
+    <strong>{{customer.name}}</strong> <br>
+    {{customer.email}} <br>
+    {{customer.phone}}
+  </div>
+  
+  <div class="ms-auto">
+    <button mat-icon-button [routerLink]="'/edit/' + customer._id">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button [routerLink]="'/details/' + customer._id">
+      <mat-icon>visibility</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" (click)="onDeleteClick(customer)">
+      <mat-icon>cancel</mat-icon>
+    </button>
   </div>
 </div>
